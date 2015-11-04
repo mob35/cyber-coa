@@ -1,0 +1,140 @@
+﻿/* edit for solved th-grid new line */
+.k-filterable .k-link {
+    width: 100%;
+}
+
+.k-grid-header .k-link {
+    text-align: center;
+    font-weight: 700;
+    color: #333333;
+    font-size: 0.9em;
+}
+
+.k-grid-header span.k-link {
+    cursor: default;
+    text-transform: uppercase;
+}
+
+.k-grid-header .k-header > .k-link {
+    text-transform: uppercase;
+}
+
+
+
+/* override by keng Cyber ad */
+.km-ios7 .km-view-title {
+    color: #878787;
+}
+
+.km-ios7 .km-navbar, .km-ios7 .k-toolbar {
+    background-color: #dbdbdb;
+}
+
+.km-ios7 .km-tabstrip {
+    background-color: #333333;
+}
+
+.km-ios7 .k-list, .km-ios7 .k-slider, .km-ios7 .km-widget {
+    color: #74A333;
+}
+
+.km-ios7 .km-tabstrip .km-button:not(.km-state-active),
+.km-ios7 li.km-state-active .km-listview-link,
+.km-ios7 li.km-state-active .km-listview-label {
+    color: #fff;
+}
+
+/*----------icon*/
+.km-coa-needApprove:after,
+.km-coa-needApprove:before {
+    content: url('../coa_icon/Need-Approve-gray.png');
+}
+
+.km-coa-inform:after,
+.km-coa-inform:before {
+    content: url('../coa_icon/Inform-gray.png');
+}
+
+.km-coa-history:after,
+.km-coa-history:before {
+    content: url('../coa_icon/History-gray.png');
+}
+
+.km-coa-more:after,
+.km-coa-more:before {
+    content: url('../coa_icon/more-gray.png');
+}
+
+.km-coa-needApprove-active:after,
+.km-coa-needApprove-active:before {
+    content: url('../coa_icon/Need-Approve.png');
+}
+
+.km-coa-inform-active:after,
+.km-coa-inform-active:before {
+    content: url('../coa_icon/Inform.png');
+}
+
+.km-coa-history-active:after,
+.km-coa-history-active:before {
+    content: url('../coa_icon/History.png');
+}
+
+.km-coa-more-active:after,
+.km-coa-more-active:before {
+    content: url('../coa_icon/more.png');
+}
+
+
+
+
+.km-flat li.km-state-active .km-listview-link,
+.km-ios7 li.km-state-active .km-listview-link {
+    background-color: #BFD22B;
+}
+
+.km-flat .km-popup .k-state-focused, 
+.km-flat .km-popup .k-state-hover,
+.km-flat .km-popup .k-state-selected {
+    /*background-color: #BFD22B;*/
+    background-color: #c9db31;
+}
+
+
+
+
+/*----------------------------for media query*/
+
+/*.km-header {
+    padding-left: 200px;
+}
+
+.km-view-title {
+    text-align: left;
+    margin-left: 10px;
+}
+
+.km-footer {
+    display: none;
+}
+.km-content {
+    padding-left:200px;
+}*/
+
+/*@media (max-width: 480px) {
+    .km-header {
+        padding-left: 0px;
+    }
+
+    .km-footer {
+        display: block;
+    }
+
+    .km-view-title {
+        text-align: center;
+        margin-left: 0px;
+    }
+    .km-content {
+    padding-left:0px;
+}
+}*/

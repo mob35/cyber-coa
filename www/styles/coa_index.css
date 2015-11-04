@@ -1,0 +1,14 @@
+
+.history_head {
+    width: 100%;
+    height: 128px;
+    z-index: 1;
+    /*background:url("../COA_img/history_head.png") center no-repeat;*/
+}
+
+.reson_border {
+    border-bottom-style: inset;
+    border-bottom-color: #e9e9e9;
+    border-bottom-width: thin;
+    height: 30px;
+}

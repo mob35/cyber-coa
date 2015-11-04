@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
+
+
+
+
+    <link href="kendo/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="kendo/styles/kendo.rtl.min.css" rel="stylesheet">
+    <!--<link href="kendo/styles/kendo.default.min.css" rel="stylesheet">-->
+    <link href="kendo/styles/kendo.metro.min.css" rel="stylesheet" />
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+
+    <link href="styles/font-awesome.css" rel="stylesheet" />
+    <link href="styles/main.css" rel="stylesheet" />
+    <link href="styles/icomoon.css" rel="stylesheet" />
+    <link href="styles/icomoon-app.css" rel="stylesheet" />
+    <link href="styles/icon.css" rel="stylesheet" />
+    <link href="styles/coa_index.css" rel="stylesheet" />
+    <link href="styles/override-bootstrap.css" rel="stylesheet" />
+    <link href="styles/override-kendo.css" rel="stylesheet" />
+
+
+
+    <!--<style>
+        html .km-wp-light .km-content,
+        html .km-wp-light .km-button,
+        html .km-wp-light .km-navbar,
+        html .km-wp-light .km-detail,
+        html .km-wp-light *:not(.k-label) > input:not(.k-input),
+        html .km-wp-light .k-dropdown,
+        html .km-wp-light *:not(.k-label) > textarea,
+        html .km-wp-light *:not(.k-label) > select
+        {
+            background: #fff;
+        }
+    </style>-->
+</head>
+<body id="TTSApp">
+
+    <script id="dateTemplate" type="text/x-kendo-template">
+        #:format_time_date(selectItem.initiateDate)#
+    </script>
+
+    <!--Login-->
+    <div id="login"
+        class="coa_login"
+        data-role="view"
+        data-title="Login"
+        data-model="app.loginService.viewModel"
+        data-stretch="true"
+        data-init="app.loginService.init"
+        data-show="app.loginService.show"
+        data-hide="app.loginService.hide">
+        <div data-role="content">
+            <div class="imgHead" align="right">
+                <img id="logoAis" src="styles/images/logo-ais.png" style="min-width: 40px; width: 9%; margin-top: 5px; margin-right: 5px;">
+            </div>
+            <div class="outer">
+                <!-- background-size: auto 100%;
+                    style="background-image: url(images/loginBGggg.png);-->
+
+                <div class="curveDiv">
+                    <div>
+                        <!--<img id="Img1" src="styles/images/ttsLogo.png" style="width: 80%">-->
+                        <br />
+                        <span style="font-size: 12pt;">Corporate Online Approve</span>
+                    </div>
+                    <form id="login-form" data-bind="events: { keyup: checkEnter }">
+                        <ul data-role="listview" data-style="inset">
+                            <li>
+                                <input class="textboxUser" type="text" id="loginusername" placeholder="Username" data-bind="value: username" />
+                                <input class="textboxPassword" type="password" id="loginpassword" placeholder="Password" data-bind="value: password" />
+                            </li>
+                        </ul>
+                        <div class="buttonArea">
+                            <input type="button" id="loginOTP" data-bind="click: onLogin" class="buttonFontWhite" value="Submit" />
+                        </div>
+
+                        <p>
+                            <label style="color: #fff;">version: </label>
+                            <label style="color: #fff;" data-bind="text: version"></label>
+                            <br />
+                            <label style="color: #fff;" >26/09/2014</label>
+                        </p>
+                        <p>
+                            <label style="color: #fff;" data-bind="text: connectionType"></label>
+                        </p>
+                        <!--<div class="buttonArea">
+                            <p>
+                                <b style="color: white">Version :
+                                <label data-bind="text: version">&nbsp;</label></b>
+                            </p>
+                            
+                        </div>-->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div data-role="footer" class="logoFooter">
+        </div>
+    </div>
+    <!--Login-->
+    <div id="div_loginOTP"
+        class="coa_login"
+        data-role="view"
+        data-title="Login OTP"
+        data-model="app.loginService.viewModel"
+        data-stretch="true"
+        data-init="app.loginService.init"
+        data-show="app.loginService.show"
+        data-hide="app.loginService.hide">
+        <div data-role="content">
+            <div class="imgHead" align="right">
+                <img id="Img1" src="styles/images/logo-ais.png" style="min-width: 40px; width: 9%; margin-top: 5px; margin-right: 5px;">
+            </div>
+            <div class="outer">
+                <!-- background-size: auto 100%;
+                    style="background-image: url(images/loginBGggg.png);-->
+
+                <div class="curveDiv">
+                    <div>
+                        <!--<img id="Img1" src="styles/images/ttsLogo.png" style="width: 80%">-->
+                        <br />
+                        <span style="font-size: 10pt;">Please enter your one time password</span>
+                    </div>
+                    <form id="Form1" data-bind="events: { keyup: checkEnter }">
+
+                        <ul data-role="listview" data-style="inset">
+                            <li>
+                                <input type="password" id="Password2" class="inputRadiusText" placeholder="one time password" data-bind="value: OTP" />
+                            </li>
+                        </ul>
+                        <div class="buttonArea">
+                            <input type="button" id="Button2" data-bind="click: onLogin" class="buttonFontWhite" value="Submit" />
+                        </div>
+                        <br />
+                        <div class="buttonArea">
+                            <input type="button" id="Button1" data-bind="click: onNewOTP" class="buttonFontWhite" value="Get New Password" />
+                        </div>
+
+                        <div class="buttonArea">
+                            <p>
+                                <!--<b style="color: white">Version :
+                                <label data-bind="text: version">&nbsp;</label></b>-->
+                                <!--<label data-bind="text: connectionType"></label>-->
+                                <a href="#login" data-bind="click: onCancelOTP">Cancel </a>
+                            </p>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div data-role="footer" class="logoFooter">
+        </div>
+    </div>
+
+    <!-----------------------------------------------Need Approve------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------>
+    <div data-title="Need Approve"
+        data-role="view"
+        id="tbs-needApprove"
+        data-init="app.coa_needApproveService.init"
+        data-model="app.coa_needApproveService.viewModel"
+        data-show="app.coa_needApproveService.show"
+        data-layout="tabstrip-layout"
+        data-url="/">
+        <header data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title">Need Approve</span>
+            </div>
+        </header>
+        <div data-role="content" data-stretch="true">
+            <ul id="needApprove_btnGroup"
+                data-select="app.coa_needApproveService.viewModel.selectPriority"
+                data-role="buttongroup"
+                style="color: #74A333; font-size: 14px; font-weight: bold;"
+                data-index="0">
+                <li style="width: 70px; text-align: center;">All</li>
+                <li style="width: 70px; text-align: center;">High</li>
+                <li style="width: 70px; text-align: center;">Medium</li>
+                <li style="width: 70px; text-align: center;">Low</li>
+            </ul>
+            <!--<input type="text" 
+                onkeyup="app.coa_needApproveService.viewModel.needApprove_filter($(this).val())" 
+                data-bind="value: txFilter" />-->
+
+            <div id="div_needApprove_scroller" data-style="inset" data-role="scroller">
+                <div id="div_show_noneFilter_needApprove" style="height: 50px;"></div>
+                <ul id="ul_needApprove"></ul>
+
+                <div id="div_needApprove_noItem" style="width: 100%; text-align: center; display: none;">
+                    <p>&nbsp;</p>
+                    <p>Data not found.</p>
+
+                </div>
+                <div style="height: 150px;"></div>
+                <div style="height: 150px;"></div>
+                <div style="height: 150px;"></div>
+                <div style="height: 150px; text-align: center; cursor: pointer; display: none;"
+                    onclick="$('#div_needApprove_scroller').data('kendoMobileScroller').scrollTo(0, 0);">
+                    <span class="fa fa-arrow-circle-up"></span>
+                    Go to Top
+                </div>
+                <!--<ul id="ul_needApprove"
+                    data-role="listview"
+                    data-template="inform-template"
+                    data-pull-to-refresh="true"
+                    data-source="dataApprove"
+                    data-click="app.coa_needApproveService.viewModel.approveDetail">
+                </ul>-->
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-----------------------------------------------Need Approve Detail------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------>
+    <div data-title="Detail" data-role="view" id="needApprove_detail"
+        data-layout="tabstrip-layout"
+        data-show="app.coa_needApproveService.viewModel.showDetail"
+        data-model="app.coa_needApproveService.viewModel"
+        data-url="/">
+        <header data-role="header">
+            <div data-role="navbar">
+                <a data-role="button"
+                    data-align="left" href="#tbs-needApprove" class="fa" data-icon="fa-back"></a>
+                <!--<a href="#tbs-needApprove" data-align="left" style="text-decoration:none;">&emsp;<span style="font-size: 30px; font-weight: bold; line-height: 0;" class="fa fa-angle-left"></span>&emsp;</a>-->
+                <span data-role="view-title">Detail</span>
+            </div>
+        </header>
+        <div data-role="content">
+            <div style="margin: 10px 10px 10px 10px;">
+                <table border="0">
+                    <tr>
+                        <td rowspan="3" style="text-align: center; vertical-align: top;">
+                            <img data-bind="attr: {src: submittedImage}" style="max-height: 100px; max-width: 80px;" />
+
+                        </td>
+                        <td style="font-size: 16px; color: black; font-weight: bold;"><span data-bind="text: dataApproveDetail.SUBJECT, style:{font-size: fontSize.header}"></span></td>
+                    </tr>
+                    <tr>
+                        <td data-bind="style:{font-size: fontSize.dateTime}">@<span data-bind="text: dataApproveDetail.SUBMITTED_USER_FNAME"></span>
+                            <span data-bind="text: dataApproveDetail.SUBMITTED_USER_LNAME"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-bind="style:{font-size: fontSize.dateTime}">
+                            <i class="fa fa-clock-o"></i><span data-bind="text: SLA.start"></span>
+                            &emsp; 
+                            <div style="display: inline-block; color: red;">
+                                <i class="fa fa-clock-o"></i><span data-bind="text: SLA.end"></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <span style="font-size: 14px;" data-bind="text: dataApproveDetail.TEXT_DISPLAY1, style:{font-size: fontSize.detail}"></span>
+                <br />
+                <br />
+                <span style="font-size: 15px;" data-bind="text: dataApproveDetail.TEXT_DISPLAY2, style:{font-size: fontSize.detail}"></span>
+                <br />
+                <br />
+                <span style="font-size: 15px;" data-bind="text: dataApproveDetail.TEXT_DISPLAY3, style:{font-size: fontSize.detail}"></span>
+                <br />
+                <br />
+                <div data-style="inset" style="background-color: #808080; color: #fff; padding: 2px 2px 2px 2px;">
+                    <a data-bind="visible: dataVisible.file1" onclick="app.coa_loadProfileService.viewModel.openFile('1', 'N')" style="cursor: pointer; display: inline-block;">
+                        <img id="N_FileIcon1" src="images/none.png" height="32" style="vertical-align: middle;" />
+                        <span data-bind="text: dataFileName.fileName1"></span>
+                    </a>
+                    <br />
+                    <a data-bind="visible: dataVisible.file2" onclick="app.coa_loadProfileService.viewModel.openFile('2', 'N')" style="cursor: pointer; display: inline-block;">
+                        <img id="N_FileIcon2" src="images/none.png" height="32" style="vertical-align: middle;" />
+                        <span data-bind="text: dataFileName.fileName2"></span>
+                    </a>
+                    <br />
+                    <a data-bind="visible: dataVisible.file3" onclick="app.coa_loadProfileService.viewModel.openFile('3', 'N')" style="cursor: pointer; display: inline-block;">
+                        <img id="N_FileIcon3" src="images/none.png" height="32" style="vertical-align: middle;" />
+                        <span data-bind="text: dataFileName.fileName3"></span>
+                    </a>
+                </div>
+
+                <table style="width: 100%;">
+                    <tr>
+                        <td>Reason</td>
+                        <td style="width: 100%;">
+                            <!--<select data-bind="source: dataApproveReason, value: REASON_CD"></select>-->
+                            <select id="dw_reason" style="width: 91%;float:right;" class="k-input"></select>
+
+
+                            <!--<input data-role="dropdownlist"
+                               data-auto-bind="true"
+                               data-text-field="REASON_DESC"
+                               data-value-field="REASON_CD"
+                               data-bind="value: dataApproveDetail.RETURN_REASON_CD,
+                                          source: dataApproveDetail.REJECT_REASON_CD,
+                                          events: {
+                                            change: onReasonSelect
+                                          }"
+                               style="width: 300px"
+                        />-->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Description#1</td>
+                        <td>
+                            <input
+                                type="text"
+                                class="k-textbox"
+                                data-bind="value: dataApproveDetail.RETURN_REMARK, style:{font-size: fontSize.detail}"
+                                placeholder="Write a comment"
+                                maxlength="500"
+                                style="width: 90%; float: right;" />
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Description#2</td>
+                        <td>
+                            <!--test input number for Android-->
+                            <!--<input
+                                type="tel"
+                                data-format="#:n0"
+                                maxlength="9"
+                                data-decimals="0"
+                                pattern="[0-9]*"
+                                title=""
+                                class="k-textbox"
+                                data-bind="value: dataApproveDetail.RETURN_AMT, style:{font-size: fontSize.detail}"
+                                onkeypress="app.coa_needApproveService.viewModel.checkNumberOnly(event);"
+                                style="width: 90%; float: right;"
+                                placeholder="0" />-->
+
+                            <input id="input_amt"
+                                type="number"
+                                class="k-textbox"
+                                data-bind="value: dataApproveDetail.RETURN_AMT, style:{font-size: fontSize.detail}"
+                                onkeypress="app.coa_needApproveService.viewModel.checkNumberOnly(event);"
+                                style="width: 90%; float: right;" placeholder="0" />
+
+
+                            <!--test input number for IOS-->
+                            <!--<input
+                                oninput="maxLengthCheck(this)"
+                                type="text"
+                                 maxlength="9"
+                                 pattern="[0-9]*"
+                                 title="Number Only"
+                                class="k-input"
+                                data-bind="value: dataApproveDetail.RETURN_AMT, style:{font-size: fontSize.detail}"
+                                style="width: 100%; float: right;" placeholder="0" />-->
+                        </td>
+                    </tr>
+                </table>
+                <div style="text-align: right;">
+                    <a data-role="button" style="background-color: #96B749; color: #fff;" onclick="$('#dw_reason').data('kendoDropDownList').value(''); app.coa_boxService.viewModel.setConfirm('Please Confirm To Submit Approve', app.coa_needApproveService.viewModel.onApprove);" data-icon="check">Approve</a>
+                    <a data-role="button" style="background-color: #CE3726; color: #fff;" onclick="app.coa_boxService.viewModel.setConfirm('Please Confirm To Submit Reject', app.coa_needApproveService.viewModel.onReject);"><b>X</b>&nbsp;&nbsp;Reject</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-----------------------------------------------Inform------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------>
+    <div data-title="Inform" data-role="view" id="tbs-inform"
+        data-init="app.coa_informService.init"
+        data-show="app.coa_informService.show"
+        data-layout="tabstrip-layout"
+        data-url="/">
+        <header data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title">Inform</span>
+            </div>
+        </header>
+        <div data-role="content">
+            <div id="div_inform_scroller" data-style="inset" data-role="scroller">
+                <div id="div_show_noneFilter_inform" style="height: 50px;"></div>
+                <ul id="ul_inform"></ul>
+                <div id="div_inform_noItem" style="width: 100%; text-align: center; display: none;">
+                    <p>&nbsp;</p>
+                    <p>Data not found.</p>
+                </div>
+                <div style="height: 150px;"></div>
+                <div style="height: 150px;"></div>
+                <div style="height: 150px;"></div>
+                
+                <div style="height: 150px; text-align: center; cursor: pointer; display: none;"
+                    onclick="$('#div_inform_scroller').data('kendoMobileScroller').scrollTo(0, 0);">
+                    <span class="fa fa-arrow-circle-up"></span>
+                    Go to Top
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <!--<ul id="ul_inform"
+                data-role="listview"
+                data-template="inform-template"
+                data-pull-to-refresh="true"
+                data-source="dataInform"
+                data-click="app.coa_informService.viewModel.informDetail">
+            </ul>-->
+            <script id="inform-template" type="text/x-kendo-template">
+                #var color = "000", colorSLA="da2228", visibleSLA="visible", lengthDisplay="", lengthSubject="", date1="";#
+                #if(SUBMITTED_USER_LNAME != null) var smName = (SUBMITTED_USER_LNAME.substring(0,1)).toUpperCase();#
+                #if(PROCESSED_FLG == "READ" && TRAN_TYPE == "I"){ color="bebebe";colorSLA="bebebe";}#
+                #if(TRAN_TYPE == "I"){ visibleSLA="hidden"; date1=CREATED;}else{ visibleSLA="visible";date1=SLA_START_DT;}#
+                #if(TEXT_DISPLAY1.length > 100){ lengthDisplay="...";}else{ lengthDisplay="";}#
+                #if(SUBJECT.length > 50){ lengthSubject="...";}else{ lengthSubject="";}#
+                #var dd = localStorage.getItem("uTime");#
+
+                <a title="${SUBJECT}" style="cursor:pointer; color:\#${color};">
+                        <table border="0">
+                          <tr>
+                            <td rowspan="2" style="vertical-align:top;">
+                                <img src="${app.configService.imageUrl}${PROFILE_IMAGE_NAME}?${dd}" style="vertical-align:top;height: 44px;width:44px;" />
+                            </td>
+                            <td style="line-height:0.5cm;"><b style="color:\#${color}; font-size: ${app.coa_settingService.viewModel.fontSize+2+"px"}">${SUBJECT.substring(0,49)}${lengthSubject}</b></td>
+                          </tr>
+                          <tr>
+                            <td style="line-height:0.50cm;color:\#${color};">
+                                <span class="info_view" style="color:\#${color}; font-size: ${app.coa_settingService.viewModel.fontSize-3+"px"}">@${SUBMITTED_USER_FNAME} ${smName}.</span>
+                                <span class="info_view" style="color:\#${color}; font-size: ${app.coa_settingService.viewModel.fontSize-3+"px"}"><i class="fa fa-clock-o"></i> ${moment(date1, "YYYY-MM-DD HH:mm:ss").calendar()}</span>
+                                <span class="info_view" style="color:\#${color}; font-size: ${app.coa_settingService.viewModel.fontSize-3+"px"}">&emsp;</span>
+                                <span class="info_view" style="color:\#${colorSLA}; visibility:${visibleSLA}; font-size: ${app.coa_settingService.viewModel.fontSize-3+"px"}"><i class="fa fa-clock-o"></i> ${moment(SLA_END_DT, "YYYY-MM-DD HH:mm:ss").calendar()}</span>
+                            </td>
+                          </tr>
+                        </table>
+                        <span style="color:\#${color}; font-size: ${app.coa_settingService.viewModel.fontSize+"px"}" class="info_view_detail">${TEXT_DISPLAY1.substring(0,99)}${lengthDisplay}</span>
+                    
+                </a>
+            </script>
+        </div>
+    </div>
+    <!-----------------------------------------------inform_detail------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------>
+    <div data-title="Detail" data-role="view" id="inform_detail"
+        data-layout="tabstrip-layout"
+        data-show="app.coa_informService.viewModel.showDetail"
+        data-model="app.coa_informService.viewModel"
+        data-url="/">
+        <header data-role="header">
+            <div data-role="navbar">
+                <a data-role="button"
+                    data-align="left" href="#tbs-inform" class="fa" data-icon="fa-back"></a>
+                <!--<a href="#tbs-inform" data-align="left" style="text-decoration:none;margin-top: 10px;">&emsp;<span style="font-size: 30px; font-weight: bold; line-height: 0;" class="fa fa-angle-left"></span>&emsp;</a>-->
+                <span data-role="view-title">Detail</span>
+            </div>
+        </header>
+        <div data-role="content">
+            <div style="margin: 10px 10px 10px 10px;">
+                <table border="0">
+                    <tr>
+                        <td rowspan="3" style="text-align: center;">
+                            <img data-bind="attr: {src: submittedImage}" style="max-height: 100px; max-width: 80px;" />
+
+                        </td>
+                        <td style="font-size: 16px; color: black;"><span data-bind="text: dataInformDetail.SUBJECT, style:{font-size: fontSize.header}"></span></td>
+                    </tr>
+                    <tr>
+                        <td data-bind="style:{font-size: fontSize.dateTime}">@<span data-bind="text: dataInformDetail.SUBMITTED_USER_FNAME"></span>
+                            <span data-bind="text: dataInformDetail.SUBMITTED_USER_LNAME"></span></td>
+                    </tr>
+                    <tr>
+                        <td data-bind="style:{font-size: fontSize.dateTime}">
+                            <i class="fa fa-clock-o"></i><span data-bind="text: SLA.start"></span>
+                            &emsp;
+                            <div style="display: none; color: red;">
+                                <i class="fa fa-clock-o"></i><span data-bind="text: SLA.end"></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <span style="font-size: 14px;" data-bind="text: dataInformDetail.TEXT_DISPLAY1, style:{font-size: fontSize.detail}"></span>
+                <br />
+                <br />
+                <span style="font-size: 15px;" data-bind="text: dataInformDetail.TEXT_DISPLAY2, style:{font-size: fontSize.detail}"></span>
+                <br />
+                <br />
+                <span style="font-size: 15px;" data-bind="text: dataInformDetail.TEXT_DISPLAY3, style:{font-size: fontSize.detail}"></span>
+                <br />
+                <br />
+                <div data-style="inset" style="background-color: #808080; color: #fff; padding: 2px 2px 2px 2px;">
+                    <a data-bind="visible: dataVisible.file1" onclick="app.coa_loadProfileService.viewModel.openFile('1', 'I')" style="cursor: pointer; display: inline-block;">
+                        <img id="I_FileIcon1" src="images/none.png" height="32" style="vertical-align: middle;" />
+                        <span data-bind="text: dataFileName.fileName1"></span>
+                    </a>
+                    <br />
+                    <a data-bind="visible: dataVisible.file2" onclick="app.coa_loadProfileService.viewModel.openFile('2', 'I')" style="cursor: pointer; display: inline-block;">
+                        <img id="I_FileIcon2" src="images/none.png" height="32" style="vertical-align: middle;" />
+                        <span data-bind="text: dataFileName.fileName2"></span>
+                    </a>
+                    <br />
+                    <a data-bind="visible: dataVisible.file3" onclick="app.coa_loadProfileService.viewModel.openFile('3', 'I')" style="cursor: pointer; display: inline-block;">
+                        <img id="I_FileIcon3" src="images/none.png" height="32" style="vertical-align: middle;" />
+                        <span data-bind="text: dataFileName.fileName3"></span>
+                    </a>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-----------------------------------------------History------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------>
+    <div data-title="History" data-role="view" id="tbs-history"
+        data-model="app.coa_historyService.viewModel"
+        data-show="app.coa_historyService.show"
+        data-init="app.coa_historyService.init"
+        data-layout="tabstrip-layout"
+        data-url="/">
+        <header data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title">History</span>
+            </div>
+        </header>
+        <div data-role="content">
+            <div style="text-align: center;">
+                <div style="position: absolute; width: 100%; text-align: center; padding-top: 40px;">
+                    <img data-bind="attr: { src: imageSrc_user }" height="50" />
+                    <br />
+                    <span data-bind="text: to_userName" style="color: #fff; font-size: 16px;"></span>
+                </div>
+                <img data-bind="attr: { src: imageSrc_cover }" style="max-width: 100%;" height="140" />
+            </div>
+
+            <ul id="history_btnGroup"
+                data-select="app.coa_historyService.viewModel.selectPriority"
+                data-role="buttongroup"
+                style="color: #74A333; font-size: 14px;"
+                data-index="0">
+                <li>Approved</li>
+                <li>Rejected</li>
+            </ul>
+            <div id="div_history_scroller" data-style="inset" data-role="scroller">
+                <div id="div_show_noneFilter_history" style="height: 50px;"></div>
+                <ul id="ul_history"></ul>
+                <div id="div_history_noItem" style="width: 100%; text-align: center; display: none;">
+                    <p>&nbsp;</p>
+                    <p>Data not found.</p>
+
+                </div>
+                <div style="height: 150px;"></div>
+                <div style="height: 150px;"></div>
+                <div style="height: 150px;"></div>
+                <div style="height: 150px; text-align: center; cursor: pointer; display: none;"
+                    onclick="$('#div_history_scroller').data('kendoMobileScroller').scrollTo(0, 0);">
+                    <span class="fa fa-arrow-circle-up"></span>
+                    Go to Top
+                </div>
+                <!--<ul id="ul_history"
+                    data-role="listview"
+                     data-auto-bind="false"
+                    data-template="inform-template"
+                    data-pull-to-refresh="true"
+                    data-source="dataHistory"
+                    data-click="app.coa_historyService.viewModel.historyDetail">
+                </ul>-->
+
+            </div>
+
+
+        </div>
+    </div>
+    <!-----------------------------------------------history_detail------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------>
+    <div data-title="Detail" data-role="view" id="history_detail"
+        data-layout="tabstrip-layout"
+        data-show="app.coa_historyService.viewModel.showDetail"
+        data-model="app.coa_historyService.viewModel"
+        data-url="/">
+        <header data-role="header">
+            <div data-role="navbar">
+                <a data-role="button"
+                    data-align="left" href="#tbs-history" class="fa" data-icon="fa-back"></a>
+                <!--<a href="#tbs-history" data-align="left" style="text-decoration:none;margin-top: 10px;">&emsp;<span style="font-size: 30px; font-weight: bold; line-height: 0;" class="fa fa-angle-left"></span>&emsp;</a>-->
+                <span data-role="view-title">Detail</span>
+            </div>
+        </header>
+        <div data-role="content">
+            <div style="margin: 10px 10px 10px 10px;">
+                <table border="0">
+                    <tr>
+                        <td rowspan="3" style="text-align: center;">
+                            <img data-bind="attr: {src: submittedImage}" style="max-height: 100px; max-width: 80px;" />
+
+                        </td>
+                        <td style="font-size: 16px; color: black;"><span data-bind="text: dataHistoryDetail.SUBJECT, style:{font-size: fontSize.header}"></span></td>
+                    </tr>
+                    <tr>
+                        <td data-bind="style:{font-size: fontSize.dateTime}">@<span data-bind="text: dataHistoryDetail.SUBMITTED_USER_FNAME"></span>
+                            <span data-bind="text: dataHistoryDetail.SUBMITTED_USER_LNAME"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-bind="style:{font-size: fontSize.dateTime}">
+                            <i class="fa fa-clock-o"></i><span data-bind="text: SLA.start"></span>
+                            &emsp; 
+                            <div style="display: inline-block; color: red;">
+                                <i class="fa fa-clock-o"></i><span data-bind="text: SLA.end"></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <span style="font-size: 14px;" data-bind="text: dataHistoryDetail.TEXT_DISPLAY1, style:{font-size: fontSize.detail}"></span>
+                <br />
+                <br />
+                <span style="font-size: 15px;" data-bind="text: dataHistoryDetail.TEXT_DISPLAY2, style:{font-size: fontSize.detail}"></span>
+                <br />
+                <br />
+                <span style="font-size: 15px;" data-bind="text: dataHistoryDetail.TEXT_DISPLAY3, style:{font-size: fontSize.detail}"></span>
+                <br />
+                <br />
+                <div data-style="inset" style="background-color: #808080; color: #fff; padding: 2px 2px 2px 2px;">
+                    <a data-bind="visible: dataVisible.file1" onclick="app.coa_loadProfileService.viewModel.openFile('1', 'H')" style="cursor: pointer; display: inline-block;">
+                        <img id="H_FileIcon1" src="images/none.png" height="32" style="vertical-align: middle;" />
+                        <span data-bind="text: dataFileName.fileName1"></span>
+                    </a>
+                    <br />
+                    <a data-bind="visible: dataVisible.file2" onclick="app.coa_loadProfileService.viewModel.openFile('2', 'H')" style="cursor: pointer; display: inline-block;">
+                        <img id="H_FileIcon2" src="images/none.png" height="32" style="vertical-align: middle;" />
+                        <span data-bind="text: dataFileName.fileName2"></span>
+                    </a>
+                    <br />
+                    <a data-bind="visible: dataVisible.file3" onclick="app.coa_loadProfileService.viewModel.openFile('3', 'H')" style="cursor: pointer; display: inline-block;">
+                        <img id="H_FileIcon3" src="images/none.png" height="32" style="vertical-align: middle;" />
+                        <span data-bind="text: dataFileName.fileName3"></span>
+                    </a>
+                </div>
+
+                <table style="width: 100%;">
+                    <tr>
+                        <td class="reson_border" style="width: 90px;">Reason:</td>
+                        <td class="reson_border"><span data-bind="text: dataHistoryDetail.RETURN_REASON_DESC, style:{font-size: fontSize.detail"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="reson_border">Description#1:</td>
+                        <td class="reson_border"><span data-bind="text: dataHistoryDetail.RETURN_REMARK, style:{font-size: fontSize.detail"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="reson_border">Description#2:</td>
+                        <td class="reson_border"><b><span data-bind="text: dataHistoryDetail.RETURN_AMT, style:{font-size: fontSize.detail"></span></b></td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td style="text-align: right; font-size: 16px;">
+                            <b><span data-bind="text: dataHistoryDetail.PROCESSED_FLG_NAME, style:{color: PROCESSED_FLG_COLOR}"></span>&emsp;</b>
+
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-----------------------------------------------coa_setting------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------>
+    <div data-title="Setting" data-role="view" id="coa_setting"
+        data-model="app.coa_settingService.viewModel"
+        data-show="app.coa_settingService.show"
+        data-init="app.coa_settingService.init"
+        data-layout="tabstrip-layout"
+        data-url="/">
+        <ul data-role="actionsheet" id="changePhoto_actionsheet">
+            <li class="km-actionsheet-title">Change Photo:</li>
+            <li><a href="#" data-action="app.coa_settingService.viewModel.onChooseLibrary">Choose from library</a></li>
+            <li><a href="#" data-action="app.coa_settingService.viewModel.onDelete">Delete</a></li>
+        </ul>
+        <header data-role="header">
+            <div data-role="navbar">
+                <a data-role="button"
+                    data-align="left" href="#tbs-more" class="fa" data-icon="fa-back"></a>
+                <span data-role="view-title">Setting</span>
+            </div>
+        </header>
+        <div data-role="content">
+
+
+            <div style="text-align: center;">
+                <div style="position: absolute; width: 100%; text-align: center; padding-top: 40px;">
+                    <a href="#changePhoto_actionsheet" data-role="button" data-rel="actionsheet" data-actionsheet-context="PHOTO" style="z-index: 1;">
+                        <img data-bind="attr: { src: imageSrc_user }" height="50" />
+                        <br />
+                        <span data-bind="text: to_userName" style="color: #fff; font-size: 16px; z-index: 99999;"></span>
+                    </a>
+
+                </div>
+                <a href="#changePhoto_actionsheet" data-role="button" data-rel="actionsheet" data-actionsheet-context="COVER" style="z-index: 0; max-width: 100%;">
+                    <img data-bind="attr: { src: imageSrc_cover }" style="max-width: 100%;" height="140" />
+                </a>
+            </div>
+            <div style="background-color: #f2f2f2;">คลิกเพื่อเปลี่ยนรูป</div>
+            <ul data-role="listview" data-style="inset">
+                <li>
+                    <div data-bind="style:{font-size: fontSize_demo}" style="float: left; font-size: 14px; padding-top: 10px;">Text Size</div>
+                    <div style="float: right;">
+                        <ul id="coa_setting_buttongroup"
+                            data-select="app.coa_settingService.viewModel.selectFont"
+                            data-role="buttongroup"
+                            style="color: #74A333; line-height: 0.6;"
+                            data-index="1">
+                            <li style="font-size: 12px;"><b>&nbsp;&nbsp;A&nbsp;&nbsp;</b></li>
+                            <li style="font-size: 16px;"><b>&nbsp;A&nbsp;</b></li>
+                            <li style="font-size: 20px;"><b>A</b></li>
+                        </ul>
+                    </div>
+                </li>
+                <!--<li>
+                    <div data-bind="style:{font-size: fontSize}" style="float:left;font-size:14px;padding-top:10px;">Max records</div>
+                    <div style="float:right;">
+                        <ul id="Ul1"
+                            data-select="app.coa_settingService.viewModel.selectMax"
+                            data-role="buttongroup"
+                            style="color: #74A333;line-height: 1;font-size:14px;"
+                            data-index="1">
+                            <li><b>&nbsp;50&nbsp;</b></li>
+                            <li><b>100</b></li>
+                            <li><b>200</b></li>
+                        </ul>
+                    </div>
+                </li>-->
+            </ul>
+        </div>
+
+
+
+
+    </div>
+    <!------------------------------------------------------logout ------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------>
+    <div data-title="Logout" data-role="view" id="logout"
+        data-layout="tabstrip-layout"
+        data-show="app.loginService.viewModel.logout"
+        data-url="/">
+        <div data-role="header">
+            <div data-role="navbar">
+                <span>Log out</span>
+            </div>
+
+        </div>
+
+    </div>
+    <!------------------------------------------------------More ------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------>
+    <div data-title="More" data-role="view" id="tbs-more"
+        data-layout="tabstrip-layout"
+        data-model="app.coa_moreService.viewModel"
+        data-show="app.coa_moreService.show"
+        data-url="/">
+        <div data-role="header">
+            <div data-role="navbar">
+                <span>More</span>
+            </div>
+
+        </div>
+        <ul data-role="listview" data-style="inset">
+            <li style="height: 36px;">
+
+                <a href="#coa_setting" data-bind="style:{font-size: fontSize.detail}"><i class="fa fa-cog" data-bind="style:{font-size: fontSize.header}"></i>&nbsp;&nbsp;Setting</a>
+            </li>
+            <li style="height: 36px;">
+                <a onclick="app.coa_boxService.viewModel.setConfirm('Please Confirm To Logout.', app.loginService.viewModel.logout);" data-bind="style:{font-size: fontSize.detail}"><i class="fa fa-power-off" data-bind="style:{font-size: fontSize.header}"></i>&nbsp;&nbsp;Log out</a>
+            </li>
+        </ul>
+        <div style="text-align: right; margin-right: 20px; display: none;">
+            TRAN_TYPE :
+            <input data-bind="value: TRAN_TYPE" placeholder="N,I" /><br />
+            SUBJECT :
+            <input data-bind="value: SUBJECT" placeholder="หัวข้อ" /><br />
+            TEXT_DISPLAY1 :
+            <input data-bind="value: TEXT_DISPLAY1" style="width: 250px;" placeholder="TEXT_DISPLAY1" /><br />
+            SLA_HOUR :
+            <input data-bind="value: SLA_HOUR" style="width: 50px;" placeholder="SLA_HOUR" /><br />
+            <a data-role="button" style="background-color: #96B749; color: #fff;" onclick="app.coa_moreService.viewModel.CreateTransaction()" data-icon="check">ADD</a>
+        </div>
+        <div id="div_moreHeight"></div>
+        <div style="text-align: center;">
+            <p>
+                <label style="color: #808080;">COA Mobile version: </label>
+                <label style="color: #808080;" data-bind="text: version"></label>
+                <br />
+                <label>26/09/2014</label>
+            </p>
+        </div>
+
+    </div>
+
+
+
+
+
+    <!-- -------------------------div Complete----------------- -->
+    <div id="div_complete" style="position: absolute; z-index: 1000000; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.39); display: none;">
+        <table style="height: 100%; width: 100%;">
+            <tr>
+                <td align="center">
+                    <div style="height: 40px; width: 320px; background-color: #94b947; text-align: left; padding: 10px 5px 5px 15px;">
+                        <span class="coa-warning-title" style="font-weight: bold; color: #fff; font-size: 16px;">Complete</span>
+                        <a onclick="$('#div_complete').hide();" style="float: right; color: #fff; padding-right: 10px; cursor: pointer;">&emsp;x&nbsp;</a>
+                    </div>
+                    <div style="width: 320px; background-color: #fff; text-align: left; padding-top: 10px; padding-bottom: 10px; text-align: center;">
+                        <p>
+                            <label class="coa-warning-text" data-bind="text: comText">text</label>
+                        </p>
+                        <p>
+                            <a data-role="button" onclick="$('#div_complete').hide();" style="border: 1px; border-style: solid; padding: 4px; margin: 2px; background-color: #94b947; border-color: #dbdbdb; cursor: pointer; color: #fff;">&emsp;OK&emsp;</a>
+                        </p>
+                    </div>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- -------------------------div Warning----------------- -->
+    <div id="div_warning" style="position: absolute; z-index: 1000000; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.39); display: none;">
+        <table style="height: 100%; width: 100%;">
+            <tr>
+                <td align="center">
+                    <div style="height: 40px; width: 320px; background-color: #f0ad4e; text-align: left; padding: 10px 5px 5px 15px;">
+                        <span class="coa-warning-title" style="font-weight: bold; color: #fff; font-size: 16px;">Warning</span>
+                        <a onclick="$('#div_warning').hide();" style="float: right; color: #fff; padding-right: 10px; cursor: pointer;">&emsp;x&nbsp;</a>
+                    </div>
+                    <div style="width: 320px; background-color: #fff; text-align: left; padding-top: 10px; padding-bottom: 10px; text-align: center;">
+                        <label class="coa-warning-text" data-bind="text: wText">text</label>
+                        <p>
+                            <a data-role="button" onclick="$('#div_warning').hide();" style="border: 1px; border-style: solid; background-color: #94b947; border-color: #dbdbdb; cursor: pointer; color: #fff;">&nbsp;&nbsp;&nbsp;&nbsp;OK&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                        </p>
+                    </div>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- -------------------------div Confirm----------------- -->
+    <div id="div_confirm" style="position: absolute; z-index: 1000000; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.39); display: none;">
+        <table style="height: 100%; width: 100%;">
+            <tr>
+                <td align="center">
+                    <div style="height: 40px; width: 320px; background-color: #428bca; text-align: left; padding: 10px 5px 5px 15px;">
+                        <span class="coa-warning-title" style="font-weight: bold; color: #fff; font-size: 16px;">Confirm</span>
+                        <a onclick="$('#div_confirm').hide();" style="float: right; color: #fff; padding-right: 10px; cursor: pointer;">&emsp;x&nbsp;</a>
+                    </div>
+                    <div style="width: 320px; background-color: #fff; text-align: left; padding-top: 10px; padding-bottom: 10px; text-align: center;">
+                        <p>
+                            <label class="coa-warning-text" data-bind="text: cText">text</label>
+                        </p>
+                        <div style="text-align: right; margin-right: 20px; margin-bottom: 10px; padding-top: 10px;">
+                            <a data-role="button" style="border: 1px; border-style: solid; padding: 4px; margin: 2px; background-color: #f2f2f2; border-color: #dbdbdb; cursor: pointer;" onclick="$('#div_confirm').hide();">&emsp;Cancel&emsp;</a>
+                            <a data-role="button" style="border: 1px; border-style: solid; padding: 4px; margin: 2px; background-color: #428bca; border-color: #dbdbdb; cursor: pointer; color: #fff;" data-bind="click: cLink">&emsp;OK&emsp;</a>
+                        </div>
+
+                    </div>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!--Login-Layout-->
+    <div data-role="layout" data-id="Login-layout">
+    </div>
+
+    <!--Detail-Layout-->
+    <div data-role="layout" data-id="Detail-layout">
+    </div>
+
+    <!--tabstrip-Layout-->
+    <div data-role="layout" data-id="tabstrip-layout">
+        <!--Footer-->
+        <header data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title"></span>
+            </div>
+        </header>
+
+        <p>TabStrip</p>
+
+        <div data-role="footer">
+            <div data-role="tabstrip" id="coa_tabstrip" data-select="onSelect_tabstrip">
+                <a href="#tbs-needApprove" id="needApprove_badge" data-badge="0" data-icon="icon-im-coaneedapprove">Need Approve</a>
+                <a href="#tbs-inform" id="inform_badge" data-badge="0" data-icon="icon-im-coainform">Inform</a>
+                <a href="#tbs-history" data-icon="icon-im-coahistory">History</a>
+                <a href="#tbs-more" data-icon="icon-im-coamore">More</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!---script bottom only-->
+    <script src="cordova.js"></script>
+    <script src="kendo/js/jquery.min.js"></script>
+    <script src="kendo/js/kendo.all.min.js"></script>
+
+    <script type="text/javascript">
+        $.support.cors = true;
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="telephonenumber.js"></script>
+    <script src="scripts/lib/fastclick.min.js"></script>
+    <script src="scripts/lib/moment-with-langs.js"></script>
+    <script>moment.lang("en-gb");</script>
+    <script src="scripts/lib/utils.js"></script>
+    <script src="scripts/lib/sjcl.js"></script>
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/config.js"></script>
+    <script src="scripts/login.js"></script>
+    <script src="scripts/callAjax.js"></script>
+    <script src="scripts/updateBadge.js"></script>
+
+    <script src="scripts/coa_dateTimeFormat.js"></script>
+    <script src="scripts/coa_needApprove.js"></script>
+    <script src="scripts/coa_inform.js"></script>
+    <script src="scripts/coa_history.js"></script>
+    <script src="scripts/coa_more.js"></script>
+    <script src="scripts/coa_setting.js"></script>
+    <script src="scripts/coa_loadProfile.js"></script>
+    <script src="scripts/coa_box.js"></script>
+
+
+</body>
+</html>

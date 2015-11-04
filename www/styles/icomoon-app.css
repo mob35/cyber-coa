@@ -1,0 +1,66 @@
+@font-face {
+	font-family: 'icomoon-app';
+	src:url('../fonts/icomoon-app.eot?-s23xay');
+	src:url('../fonts/icomoon-app.eot?#iefix-s23xay') format('embedded-opentype'),
+		url('../fonts/icomoon-app.woff?-s23xay') format('woff'),
+		url('../fonts/icomoon-app.ttf?-s23xay') format('truetype'),
+		url('../fonts/icomoon-app.svg?-s23xay#icomoon-app') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon-app';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-coahistory:before {
+	content: "\e600";
+}
+.icon-coainform:before {
+	content: "\e601";
+}
+.icon-coamore:before {
+	content: "\e602";
+}
+.icon-coaneedapprove:before {
+	content: "\e603";
+}
+/*--------------------COA_ICON_override_Kendo----------------------*/
+.km-icon-im-coaneedapprove:after,
+.km-icon-im-coaneedapprove:before
+{
+    font-family: icomoon-app;
+    content: "\e603";
+    font-size: 40px;
+}
+.km-icon-im-coainform:after,
+.km-icon-im-coainform:before
+{
+    font-family: icomoon-app;
+    content: "\e601";
+    font-size: 40px;
+}
+.km-icon-im-coahistory:after,
+.km-icon-im-coahistory:before
+{
+    font-family: icomoon-app;
+    content: "\e600";
+    font-size: 36px;
+}
+.km-icon-im-coamore:after,
+.km-icon-im-coamore:before
+{
+    font-family: icomoon-app;
+    content: "\e602";
+    font-size: 36px;
+}

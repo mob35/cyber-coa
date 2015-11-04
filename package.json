@@ -1,0 +1,22 @@
+{
+  "name": "ttsm",
+  "description": "ttsm r2",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "express": "latest"
+  },
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-express-server": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-open": "latest",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.9",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-jasmine": "^0.3.6"
+  }
+}

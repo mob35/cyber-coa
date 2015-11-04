@@ -1,0 +1,85 @@
+.fa .km-icon:after,
+.fa .km-icon:before
+{
+    font: 1em/1em 'FontAwesome';
+}
+
+
+.km-fa-back:after,
+.km-fa-back:before
+{
+    content: "\f177";
+}
+
+.km-fa-undo:after,
+.km-fa-undo:before
+{
+    content: "\f0e2";
+}
+
+.km-fa-save:after,
+.km-fa-save:before
+{
+    content: "\f0c7";
+}
+
+.km-fa-del:after,
+.km-fn-del:before
+{
+    content: "\f014";
+}
+
+.km-fa-action:after,
+.km-fa-action:before
+{
+    content: "\f0d7";
+}
+
+.km-check:after,
+.km-check:before
+{
+    content: "\e037";
+}
+
+.km-typing:after,
+.km-typing:before
+{
+    content: "\e061";
+}
+
+.km-fa-filter:after,
+.km-fa-filter:before
+{
+    content: "\f0b0";
+}
+
+.km-fa-display:after,
+.km-fa-display:before
+{
+    content: "\f108";
+}
+
+.km-fa-direction:after,
+.km-fa-direction:before
+{
+    content: "\f074";
+}
+
+.km-fa-multi:after,
+.km-fa-multi:before
+{
+    content: "\f00a";
+}
+
+.km-fa-gallery:after,
+.km-fa-gallery:before
+{
+    content: "\e07c";
+}
+
+.km-fa-pin:after,
+.km-fa-pin:before
+{
+    content: "\e0b4";
+}
+
